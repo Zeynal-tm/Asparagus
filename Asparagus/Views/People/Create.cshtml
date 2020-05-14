@@ -1,0 +1,38 @@
+﻿@model Asparagus.Models.Person
+
+@{
+    ViewData["Title"] = "Asparagus.com";
+}
+
+<h3 style="text-align:center">Первая в мире социальная сеть, объединяющая любителей<br /><span style="color:darkgreen">СПАРЖИ</span></h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Имя</label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Почта</label>
+                <input asp-for="Email" class="form-control" type="email" required/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Я съел спаржу!" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
