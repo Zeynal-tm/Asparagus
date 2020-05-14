@@ -42,7 +42,7 @@ namespace Asparagus.Controllers
                 SortState.ModifiedDateAsc => users.OrderBy(s => s.ModifiedDate),
                 _ => users.OrderByDescending(s => s.ModifiedDate),
             };
-            return View(await PaginatedList<Person>.CreateAsync(users.AsNoTracking(), pageNumber, 25));
+            return View(await PaginatedList<Person>.CreateAsync(users.AsNoTracking(), pageNumber, 15));
             //return View(await users.ToListAsync());
         }
 

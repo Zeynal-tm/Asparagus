@@ -1,6 +1,5 @@
 ﻿@model PaginatedList<Asparagus.Models.Person>
 
-
 @{
     ViewData["Title"] = "Список";
 }
@@ -13,7 +12,6 @@
         <tr style="text-align:center">
             <th>
                 <a asp-action="Index" style="color:#0366d6">№</a>
-
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">
@@ -35,6 +33,9 @@
                     Дата последнего <br /> употребления спаржи
                 </a>
             </th>
+            <th>
+                <a asp-action="Index" style="color:#0366d6">Почта</a>
+            </th>
 
         </tr>
     </thead>
@@ -46,23 +47,26 @@
 
         @foreach (var item in Model)
         {
-            <tr style="text-align:center">
-                <td>
-                    @Html.Raw(numCounter++)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreateDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CountOfAsparagus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedDate)
-                </td>
-            </tr>
+        <tr style="text-align:center">
+            <td>
+                @Html.Raw(numCounter++)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountOfAsparagus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+        </tr>
         }
     </tbody>
 </table>
