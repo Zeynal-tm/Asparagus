@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Список";
 }
-<a asp-action="Create">Вернуться</a><br />
+<a asp-action="Create">Вернуться</a>
+<br />
 
 <h1 style="text-align:center">Список</h1>
 
@@ -36,7 +37,6 @@
             <th>
                 <a asp-action="Index" style="color:#0366d6">Почта</a>
             </th>
-
         </tr>
     </thead>
     <tbody>
@@ -47,32 +47,33 @@
 
         @foreach (var item in Model)
         {
-        <tr style="text-align:center">
-            <td>
-                @Html.Raw(numCounter++)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CountOfAsparagus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-        </tr>
+            <tr style="text-align:center">
+                <td>
+                    @Html.Raw(numCounter++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountOfAsparagus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 
 <p>
 </p>
+
 
 @{
     var prevDisabled = !Model.PreviousPage ? "disabled" : "";

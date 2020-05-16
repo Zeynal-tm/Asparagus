@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Asparagus.Models
             this.AddRange(items);
         }
 
+        
         public bool PreviousPage
         {
             get
@@ -26,6 +28,7 @@ namespace Asparagus.Models
             }
         }
 
+       
         public bool NextPage
         {
             get
@@ -38,7 +41,7 @@ namespace Asparagus.Models
         {
             var count = await source.CountAsync();
             var items = await source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-            return new PaginatedList<T>(items, count, pageIndex, pageSize); 
+            return new PaginatedList<T>(items, count, pageIndex, pageSize);
         }
     }
 }
