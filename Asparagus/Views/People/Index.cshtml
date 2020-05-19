@@ -1,4 +1,6 @@
 ﻿@model PaginatedList<Asparagus.Models.Person>
+@using Asparagus.Models
+@using Asparagus.Controllers
 
 @{
     ViewData["Title"] = "Список";
@@ -40,16 +42,11 @@
         </tr>
     </thead>
     <tbody>
-
-        @{
-            int numCounter = 1;
-        }
-
         @foreach (var item in Model)
         {
             <tr style="text-align:center">
                 <td>
-                    @Html.Raw(numCounter++)
+                    @Html.Raw(PeopleController.countNumber++)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -71,20 +68,22 @@
     </tbody>
 </table>
 
-<p>
-</p>
-
-
 @{
     var prevDisabled = !Model.PreviousPage ? "disabled" : "";
     var nextDisabled = !Model.NextPage ? "disabled" : "";
 }
 
-<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)"
-   class="btn btn-default @prevDisabled">
-    Предыдущее
-</a>
-<a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)"
-   class="btn btn-default @nextDisabled">
-    Следуюущее
-</a>
+@if (Model.PreviousPage)
+{
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-isPreview="true" 
+       class="btn btn-default @prevDisabled">
+        Preview
+    </a>
+}
+@if (Model.NextPage)
+{
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+}

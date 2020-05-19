@@ -18,7 +18,6 @@ namespace Asparagus.Models
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             this.AddRange(items);
         }
-
         
         public bool PreviousPage
         {
@@ -27,7 +26,6 @@ namespace Asparagus.Models
                 return (PageIndex > 1);
             }
         }
-
        
         public bool NextPage
         {
