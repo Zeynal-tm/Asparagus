@@ -74,7 +74,7 @@
 
 @if (Model.PreviousPage)
 {
-    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-isPreview="true"
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)"
        class="btn btn-default @prevDisabled">
         Preview
     </a>

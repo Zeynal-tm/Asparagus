@@ -24,9 +24,7 @@ namespace Asparagus.Controllers
             this.db = db;
         }
 
-        const int TOTAL_USERS_OF_THE_PAGE = 10;
-
-        public async Task<IActionResult> Index(SortState sortOrder = SortState.ModifiedDateDesc, int pageNumber = 1, bool isPreview = false)
+        public async Task<IActionResult> Index(SortState sortOrder = SortState.ModifiedDateDesc, int pageNumber = 1)
         {
             IQueryable<Person> users = db.People;
             ViewData["CreateDataSort"] = sortOrder == SortState.CreateDateAsc ? SortState.CreateDateDesc : SortState.CreateDateAsc;
@@ -46,16 +44,9 @@ namespace Asparagus.Controllers
                 _ => users.OrderByDescending(s => s.ModifiedDate),
             };
 
-            if (isPreview)
-            {
-              UserCounter.countNumber = UserCounter.countNumber - TOTAL_USERS_OF_THE_PAGE;
-            }
-
             return View(await PaginatedList<Person>.CreateAsync(users.AsNoTracking(), pageNumber, 7));
-            //return View(await users.ToListAsync());
         }
 
-        // GET: People/Create
         public IActionResult Create()
         {
             return View();
