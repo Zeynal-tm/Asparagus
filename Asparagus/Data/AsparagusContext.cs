@@ -26,6 +26,8 @@ namespace Asparagus.Data
         private void ProcessSave()
         {
             var currentTime = DateTimeOffset.Now;
+
+           
             foreach (var item in ChangeTracker.Entries()
                 .Where(e => e.State == EntityState.Added && e.Entity is Entity ))
             {

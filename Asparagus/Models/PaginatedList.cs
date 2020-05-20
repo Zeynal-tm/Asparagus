@@ -11,10 +11,12 @@ namespace Asparagus.Models
     {
         public int PageIndex { get; private set; }
         public int TotalPages { get; set; }
+        public int CurrentPageUsers { get; set; }
 
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
             PageIndex = pageIndex;
+            CurrentPageUsers = (pageIndex * pageSize) - pageSize;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
             this.AddRange(items);
         }

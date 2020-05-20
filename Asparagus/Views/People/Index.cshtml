@@ -46,8 +46,7 @@
         {
             <tr style="text-align:center">
                 <td>
-                    @Html.Raw(PeopleController.countNumber++)
-                </td>
+                    @Html.Raw(++Model.CurrentPageUsers)
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -75,14 +74,14 @@
 
 @if (Model.PreviousPage)
 {
-    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-isPreview="true" 
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-isPreview="true"
        class="btn btn-default @prevDisabled">
         Preview
     </a>
 }
 @if (Model.NextPage)
 {
-    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)"
+    <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" 
        class="btn btn-default @nextDisabled">
         Next
     </a>

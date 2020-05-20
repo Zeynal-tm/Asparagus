@@ -10,6 +10,7 @@ using Asparagus.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using X.PagedList;
 
+
 namespace Asparagus.Controllers
 {
     public class PeopleController : Controller
@@ -23,7 +24,7 @@ namespace Asparagus.Controllers
             this.db = db;
         }
 
-        public static int countNumber = 1;
+        const int TOTAL_USERS_OF_THE_PAGE = 10;
 
         public async Task<IActionResult> Index(SortState sortOrder = SortState.ModifiedDateDesc, int pageNumber = 1, bool isPreview = false)
         {
@@ -47,9 +48,10 @@ namespace Asparagus.Controllers
 
             if (isPreview)
             {
-                countNumber = countNumber - 10;
+              UserCounter.countNumber = UserCounter.countNumber - TOTAL_USERS_OF_THE_PAGE;
             }
-            return View(await PaginatedList<Person>.CreateAsync(users.AsNoTracking(), pageNumber, 5));
+
+            return View(await PaginatedList<Person>.CreateAsync(users.AsNoTracking(), pageNumber, 7));
             //return View(await users.ToListAsync());
         }
 
